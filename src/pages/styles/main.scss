@@ -3,9 +3,12 @@
 @import "bootstrap-icons/font/bootstrap-icons.css";
 
 // Custom variables must load before component styles
-@import "./variables";
+@import "./common/variables";
 
-// Application styles
-@import "./layout";
-@import "./navbar";
-@import "./footer";
+// Application common styles
+@import "./common/layout";
+@import "./common/navbar";
+@import "./common/footer";
+
+// Application component styles
+@import "./home";

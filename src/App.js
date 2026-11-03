@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import { AuthProvider } from './context/AuthContext';
 
@@ -10,8 +10,8 @@ import './pages/styles/main.scss';
 
 function App() {
   return (
-    <AuthProvider>
-      <BrowserRouter>
+    <BrowserRouter>
+      <AuthProvider>
         <Routes>
           {/* Pages that use the common Layout */}
           <Route path="/" element={<Layout />}>
@@ -21,8 +21,8 @@ function App() {
           {/* Login page without the common Layout */}
           <Route path="/login" element={<Login />} />
         </Routes>
-      </BrowserRouter>
-    </AuthProvider>
+      </AuthProvider>
+    </BrowserRouter>
   );
 }
 

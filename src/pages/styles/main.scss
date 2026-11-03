@@ -1,0 +1,11 @@
+
+@import "bootstrap/scss/bootstrap";
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
+// Custom variables must load before component styles
+@import "./variables";
+
+// Application styles
+@import "./layout";
+@import "./navbar";
+@import "./footer";

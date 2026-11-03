@@ -1,10 +1,18 @@
-import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router';
+
+import Layout from './pages/common/Layout';
+import Home from './pages/Home';
+import './pages/styles/main.scss';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Hello World!</h1>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

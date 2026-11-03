@@ -193,6 +193,55 @@
     }
   }
 
+    &__avatar {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+      135deg,
+      $primary,
+      $secondary,
+      $accent-pink
+    );
+
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  &__login-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-left: 12px;
+    padding: 9px 18px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: linear-gradient(
+      135deg,
+      $primary,
+      $secondary
+    );
+
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+
+    &:hover {
+      color: white;
+      opacity: 0.9;
+    }
+  }
+  
   // Responsive
   @media (max-width: 991.98px) {
     .navbar-collapse {

@@ -1,5 +1,8 @@
-
 import React, { useMemo, useState } from "react";
+import { useNavigate } from 'react-router-dom';
+
+// For UI drafting only
+import { events, formatPrice } from '../data/EventData';
 
 const categories = [
   { name: "Music", icon: "bi-music-note-beamed", count: 24 },
@@ -10,85 +13,9 @@ const categories = [
   { name: "Business", icon: "bi-briefcase", count: 10 },
 ];
 
-const events = [
-  {
-    id: 1,
-    title: "Colombo Music Festival 2026",
-    category: "Music",
-    date: "November 15, 2026",
-    time: "06:00 PM",
-    location: "Colombo",
-    price: 2500,
-    image:
-      "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=800",
-    featured: true,
-  },
-  {
-    id: 2,
-    title: "Technology Innovation Summit",
-    category: "Technology",
-    date: "November 20, 2026",
-    time: "09:00 AM",
-    location: "Kandy",
-    price: 3000,
-    image:
-      "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800",
-    featured: true,
-  },
-  {
-    id: 3,
-    title: "Food & Culture Festival",
-    category: "Food & Drink",
-    date: "November 25, 2026",
-    time: "04:00 PM",
-    location: "Galle",
-    price: 1500,
-    image:
-      "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800",
-    featured: false,
-  },
-  {
-    id: 4,
-    title: "Modern Art Exhibition",
-    category: "Art & Culture",
-    date: "December 02, 2026",
-    time: "10:00 AM",
-    location: "Colombo",
-    price: 0,
-    image:
-      "https://images.unsplash.com/photo-1531058020387-3be344556be6?w=800",
-    featured: false,
-  },
-  {
-    id: 5,
-    title: "Champions Sports Meetup",
-    category: "Sports",
-    date: "December 08, 2026",
-    time: "03:00 PM",
-    location: "Kandy",
-    price: 1200,
-    image:
-      "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=800",
-    featured: false,
-  },
-  {
-    id: 6,
-    title: "Business Networking Event",
-    category: "Business",
-    date: "December 12, 2026",
-    time: "05:00 PM",
-    location: "Colombo",
-    price: 2000,
-    image:
-      "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800",
-    featured: false,
-  },
-];
-
-const formatPrice = (price) =>
-  price === 0 ? "Free" : `Rs. ${price.toLocaleString("en-LK")}`;
-
 function Home() {
+  const navigate = useNavigate();
+  
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedLocation, setSelectedLocation] = useState("All");
@@ -221,9 +148,8 @@ function Home() {
             {categories.map((item) => (
               <div className="col-6 col-md-4 col-lg-2" key={item.name}>
                 <button
-                  className={`category-card ${
-                    selectedCategory === item.name ? "active" : ""
-                  }`}
+                  className={`category-card ${selectedCategory === item.name ? "active" : ""
+                    }`}
                   onClick={() => {
                     setSelectedCategory(item.name);
                     document.getElementById("events")?.scrollIntoView({
@@ -400,7 +326,10 @@ function Home() {
                           <strong>{formatPrice(event.price)}</strong>
                         </div>
 
-                        <button className="event-details-btn">
+                        <button
+                          className="event-details-btn"
+                          onClick={() => navigate(`/event/${event.id}`)}
+                        >
                           View Details
                           <i className="bi bi-arrow-up-right"></i>
                         </button>
